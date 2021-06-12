@@ -1,0 +1,141 @@
+/**
+  This is the main style for the page
+  This file uses basic transition and animation affect 
+  For more advance transition/animation, a library needs to be used
+  */
+
+// SASS variables
+$font-family: Arial, Verdana, sans-serif
+$page-background: #ecf0f1
+$text-color: #2c3e50
+$primary-color: #3498db
+$primary-text-color: #fff
+$color-danger: #f55
+
+// SASS extends groups
+%buttons 
+  position: relative
+  cursor: pointer
+  padding: 10px
+  border-radius: 2px
+  background-color: $primary-color
+  color: $primary-text-color
+  box-shadow: 2px 2px 5px #bbb
+  z-index: 0
+  overflow: hidden
+
+%buttons:active 
+  box-shadow: 0px 0px 0px #ccc
+
+
+%buttons:after 
+  content: ""
+  position: absolute
+  top: 0
+  left: 0
+  width: 0%
+  height: 100%
+  z-index: -1
+  background-color: #fff
+  opacity: 0.2
+  transition: 0.2s
+
+%buttons:hover:after 
+  width: 100%
+
+// remove/modify vendor style
+
+body 
+  margin: 0 25px
+  background-color: $page-background
+  color: $text-color
+  font-family: $font-family
+  box-sizing: border-box
+
+*, *:before, *:after
+  border: none
+  outline: none
+  text-decoration: none
+  list-style: none
+  box-sizing: inherit
+
+h1, h2, h3, h4, h5, h6
+  font-weight: 100
+
+button, input[type="submit"], .button
+  @extend %buttons
+
+input[type="text"]
+  padding: 8px
+  border-radius: 3px
+  background: #efefef
+
+
+.form-group
+  margin-bottom: 10px
+
+.hidden 
+  display: none!important
+
+// app container style 
+#app 
+  max-width: 900px
+  margin: 25px auto
+  .users
+    display: grid
+    grid-template-columns: 1fr 1fr 1fr
+    gap: 25px
+    .user 
+      background-color: #fff
+      padding: 25px
+      border-radius: 5px
+      box-shadow: 5px 5px 15px -5px #ccc
+      cursor: pointer
+      h3 
+        margin-top: 0
+    .error-container
+      grid-column: 1/-1
+
+.popup-box 
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  padding: 25px
+  background-color: rgb(0, 0, 0, 0.6)
+  display: flex
+  align-items: center
+  justify-content: center
+  .container 
+    display: flex
+    flex-direction: column
+    width: 500px
+    height: 500px
+    max-width: 100%
+    max-height: 80%
+    padding: 25px
+    border-radius: 5px
+    background-color: #fff
+
+
+.todos
+  overflow-y: scroll
+  height: 350px
+
+.todo
+  padding-bottom: 10px
+  border-bottom: 1px solid #ccc
+
+.error-container
+  margin-top: 25px
+  color: $color-danger
+
+// Response 
+@media (max-width: 850px)
+  #app .users
+    grid-template-columns: 1fr 1fr
+  
+@media (max-width: 600px)
+  #app .users
+    grid-template-columns: 1fr
