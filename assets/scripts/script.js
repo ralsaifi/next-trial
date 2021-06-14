@@ -4,9 +4,6 @@
  * It has the generic functionality of initializing the app
  */
 
-// This script uses ES6 import/exports so a server is needed to load the project
-import User from './user.class.js'
-
 const usersContainerElement = document.querySelector('.users');
 const popupContainer = document.querySelector('.popup-box .container');
 

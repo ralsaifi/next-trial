@@ -149,7 +149,8 @@ class User {
       User.renderErrors(errors, errorContainer);
       return;
     }
-
+// Exporting user to use it from everywhere
+// export default User;
     // This line get the highest todo id and add 1 for the new todo
     const newTodoId = Math.max.apply(Math, user.todos.map(todo => todo.id)) + 1;
 
@@ -174,6 +175,3 @@ class User {
     htmlElement.innerHTML = html;
   }
 }
-
-// Exporting user to use it from everywhere
-export default User;
